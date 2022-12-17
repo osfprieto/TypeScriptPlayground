@@ -14,5 +14,5 @@ task('clean', cleanTask(['bin', 'dist', 'lib']));
 task('build', series('ts'));
 task('test', series('jest'));
 
-task('image-to-gray', () => { require('./lib').imageToGrayTask(); });
-task('image-to-binary', () => { require('./lib').imageToBinaryTask() });
+task('image-to-gray', () => { require('./lib').imageToGray(); });
+task('image-to-binary', () => { require('./lib').imageToBinary() });
