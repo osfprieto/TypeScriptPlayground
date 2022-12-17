@@ -1,0 +1,23 @@
+{
+    "name": "typescript-template-repo-package",
+    "version": "1.0.0",
+    "description": "TypeScript template repo package",
+    "license": "WTFPL",
+    "private": true,
+    "scripts": {
+        "clean": "lage clean",
+        "build": "lage build",
+        "test": "lage test",
+        "start": "lage start"
+    },
+    "workspaces": {
+      "packages": [
+        "packages/*"
+      ]
+    },
+    "repository": "https://github.com/osfprieto/TypeScriptTemplate",
+    "devDependencies": {
+        "lage": "1.9.5"
+    },
+    "author": "osfprieto"
+}
