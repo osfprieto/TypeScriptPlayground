@@ -1,8 +1,8 @@
 {
-    "name": "typescript-template-repo-package",
+    "name": "osfprieto-typescript-playground",
     "version": "1.0.0",
-    "description": "TypeScript template repo package",
-    "license": "WTFPL",
+    "description": "osfprieto typescript playground",
+    "license": "MIT",
     "private": true,
     "scripts": {
         "clean": "lage clean",
@@ -15,7 +15,7 @@
         "packages/*"
       ]
     },
-    "repository": "https://github.com/osfprieto/TypeScriptTemplate",
+    "repository": "https://github.com/osfprieto/TypeScriptPlayground",
     "devDependencies": {
         "lage": "1.9.5"
     },

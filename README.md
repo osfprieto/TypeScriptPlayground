@@ -1,10 +1,6 @@
-# TypeScript template
+# TypeScript playground
 
-This is a repo with a quick starter project that includes:
-
-- `TypeScript` as the compiler language.
-- `yarn` as the dependency manager.
-- `just` to help define tasks within the package.
+osfprieto's TS playground
 
 ## Pre-requisities
 
@@ -31,4 +27,4 @@ Refer to the [package.json](./package.json) definition for the scripts that you 
 
 ### Running a task on a specific package
 
-`yarn <foo> --to <package>`.
+`yarn <task> --to <package>`.
