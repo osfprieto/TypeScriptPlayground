@@ -1,3 +1,3 @@
 export function imageToBinary(){
-    console.log('image-to-gray-binary');
+    console.log('image-to-binary-called');
 }
