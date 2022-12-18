@@ -3,6 +3,7 @@
     "version": "1.0.1",
     "description": "Image processing package",
     "main": "lib/index.js",
+    "license": "MIT",
     "repository": "https://github.com/osfprieto/TypeScriptPlayground",
     "scripts": {
         "clean": "just-scripts clean",
