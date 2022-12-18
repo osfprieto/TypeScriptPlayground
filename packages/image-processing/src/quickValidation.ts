@@ -1,4 +1,5 @@
 import { readBmp, writeBmp } from './io';
+import { resolveImageMetadata } from './resolveImageMetadata';
 
 /**
  * This is the quick validation function to run manual tests.
@@ -14,7 +15,10 @@ export function quickValidation(): void {
  */
 function validateIO(): void {
     readBmp('.images/gray.bmp')
-    .then((pixelMatrix) => writeBmp('.images/gray-copy.bmp', pixelMatrix))
+    .then((pixelMatrix) => {
+        resolveImageMetadata(pixelMatrix).then((metadata) => console.log('read image', metadata));
+        return writeBmp('.images/gray-copy.bmp', pixelMatrix);
+    })
     .then(() => console.log('copied over'))
     .catch((error) => console.error(error));
 }

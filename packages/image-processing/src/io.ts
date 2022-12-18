@@ -68,5 +68,3 @@ function parseDecodedDataIntoPixelMatrix(decodedData: BMP_DTO): PixelMatrix {
     
     return pixelMatrix;
 }
-
-

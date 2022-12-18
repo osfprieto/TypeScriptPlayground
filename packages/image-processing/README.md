@@ -1,6 +1,6 @@
 # image processing
 
-This package intends to offer some different image processing capabilities.
+This package intends to offer some different image processing capabilities
 
 ## Usage
 
@@ -18,9 +18,9 @@ The code is built exposing tasks that can be used directly from other packages a
 
 ## Available tasks
 
-### image-to-gray
+### image-to-monochrome
 
-Takes an image path and recreates it translating the colors to gray-scale.
+Takes an image path and recreates the image translating the colors to a monochrome scale.
 
 ### image-to-binary
 
