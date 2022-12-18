@@ -16,3 +16,5 @@ task('test', series('jest'));
 
 task('image-to-gray', () => { require('./lib').imageToGray(); });
 task('image-to-binary', () => { require('./lib').imageToBinary() });
+
+task('quick-validation', () => { require('./lib').quickValidation()});
