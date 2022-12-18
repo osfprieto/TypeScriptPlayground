@@ -1,9 +1,9 @@
 {
     "name": "bmp-image-processing",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Image processing package",
     "main": "lib/index.js",
-    "repository": "https://github.com/osfprieto/TypeScriptTemplate",
+    "repository": "https://github.com/osfprieto/TypeScriptPlayground",
     "scripts": {
         "clean": "just-scripts clean",
         "build": "just-scripts build",
