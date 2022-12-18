@@ -17,7 +17,7 @@ function validateIO(): void {
     readBmp('.images/gray.bmp')
     .then((pixelMatrix) => {
         resolveImageMetadata(pixelMatrix).then((metadata) => console.log('read image', metadata));
-        return writeBmp('.images/gray-copy.bmp', pixelMatrix);
+        return writeBmp('.images/output/gray-copy.bmp', pixelMatrix);
     })
     .then(() => console.log('copied over'))
     .catch((error) => console.error(error));

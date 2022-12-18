@@ -14,7 +14,7 @@ export function imageToBinaryByComponentTask(): Promise<void>{
     })
     .then((processedMatrix) => {
         resolveImageMetadata(processedMatrix).then((metadata) => console.log('processed image', metadata));
-        return writeBmp('.images/gray-binary-by-component.bmp', processedMatrix);
+        return writeBmp('.images/output/gray-binary-by-component.bmp', processedMatrix);
     })
     .then(() => console.log('copied over'))
     .catch((error) => console.error(error));
