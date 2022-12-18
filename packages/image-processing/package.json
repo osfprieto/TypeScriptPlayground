@@ -1,5 +1,5 @@
 {
-    "name": "image-processing",
+    "name": "bmp-image-processing",
     "version": "1.0.0",
     "description": "Image processing package",
     "main": "lib/index.js",
