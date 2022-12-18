@@ -16,5 +16,6 @@ task('test', series('jest'));
 
 task('image-to-monochrome', () => { require('./lib').imageToMonochromeTask(); });
 task('image-to-binary', () => { require('./lib').imageToBinaryTask() });
+task('image-to-binary-by-component', () => { require('./lib').imageToBinaryByComponentTask() });
 
 task('quick-validation', () => { require('./lib').quickValidation()});

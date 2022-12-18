@@ -10,6 +10,7 @@
         "test": "just-scripts test",
         "image-to-monochrome": "just-scripts image-to-monochrome",
         "image-to-binary": "just-scripts image-to-binary",
+        "image-to-binary-by-component": "just-scripts image-to-binary-by-component",
         "quick-validation": "just-scripts quick-validation"
     },
     "devDependencies": {

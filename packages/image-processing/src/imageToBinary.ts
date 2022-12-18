@@ -21,6 +21,8 @@ export function imageToBinaryTask(): Promise<void>{
 
 /**
  * Receives a PixelMatrix and yields a binary version of it.
+ * This calcualtes the max and minimum values for each component and rebuilds the same image
+ * using only these two colors.
  * @param factor The higher the number, the bigger the resulting image (factor^2) but
  * the better the quality that is kept when seen from a distance
  */
@@ -45,23 +47,20 @@ export async function imageToBinary(pixelMatrix: PixelMatrix, factor: number = 4
         // console.log('walking row', rowIndex);
         row.forEach((pixel, columnIndex) => {
             // Alpha stays the same.
-            // Goes through reds, greens and blues doing the same thing:
-            // Takes the current value and finds the bucket where the current
-            // pixel value falls within the factor^scale, calculates the expected
-            // number of pixels to declare as Max and Min and then populates with 
-            // that amount.
             
-            // Reds
-            let max = pixelMatrixMetadata.max.red;
-            let min = pixelMatrixMetadata.min.red;
-            let current = pixel.red;
-
-            let maxCount = calculateMaxCount(max, min, current, factor*factor);
+            // Calculates the max count based of the reds, because red is the coolest color.
+            let maxCount = calculateMaxCount(
+                pixelMatrixMetadata.max.red,
+                pixelMatrixMetadata.min.red,
+                pixel.red,
+                factor*factor);
 
             // Flush the augmented pixels with the min values.
             for(let i = 0; i < factor; i += 1){
                 for(let j = 0; j < factor; j += 1){
-                    processedMatrix[rowIndex*factor + i][columnIndex*factor + j].red = min;
+                    processedMatrix[rowIndex*factor + i][columnIndex*factor + j].red = pixelMatrixMetadata.min.red;
+                    processedMatrix[rowIndex*factor + i][columnIndex*factor + j].green = pixelMatrixMetadata.min.green;
+                    processedMatrix[rowIndex*factor + i][columnIndex*factor + j].blue = pixelMatrixMetadata.min.blue;
                 }
             }
 
@@ -70,68 +69,21 @@ export async function imageToBinary(pixelMatrix: PixelMatrix, factor: number = 4
             while(counter < maxCount){
                 const i = Math.floor(Math.random()*factor);
                 const j = Math.floor(Math.random()*factor);
-                if(processedMatrix[rowIndex*factor + i][columnIndex*factor + j].red === min){
-                    processedMatrix[rowIndex*factor + i][columnIndex*factor + j].red = max;
+                if(processedMatrix[rowIndex*factor + i][columnIndex*factor + j].red === pixelMatrixMetadata.min.red){
+                    processedMatrix[rowIndex*factor + i][columnIndex*factor + j].red = pixelMatrixMetadata.max.red;
+                    processedMatrix[rowIndex*factor + i][columnIndex*factor + j].green = pixelMatrixMetadata.max.green;
+                    processedMatrix[rowIndex*factor + i][columnIndex*factor + j].blue = pixelMatrixMetadata.max.blue;
                     counter += 1;
                 }
             }
 
-            // Greens
-            max = pixelMatrixMetadata.max.green;
-            min = pixelMatrixMetadata.min.green;
-            current = pixel.green;
-
-            maxCount = calculateMaxCount(max, min, current, factor*factor);
-
-            // Flush the augmented pixels with the min values.
-            for(let i = 0; i < factor; i += 1){
-                for(let j = 0; j < factor; j += 1){
-                    processedMatrix[rowIndex*factor + i][columnIndex*factor + j].green = min;
-                }
-            }
-
-            // Randomly fill pixels with max until we get to a max count for that pixel
-            counter = 0;
-            while(counter < maxCount){
-                const i = Math.floor(Math.random()*factor);
-                const j = Math.floor(Math.random()*factor);
-                if(processedMatrix[rowIndex*factor + i][columnIndex*factor + j].green === min){
-                    processedMatrix[rowIndex*factor + i][columnIndex*factor + j].green = max;
-                    counter += 1;
-                }
-            }
-
-            // Blues
-            max = pixelMatrixMetadata.max.blue;
-            min = pixelMatrixMetadata.min.blue;
-            current = pixel.blue;
-
-            maxCount = calculateMaxCount(max, min, current, factor*factor);
-
-            // Flush the augmented pixels with the min values.
-            for(let i = 0; i < factor; i += 1){
-                for(let j = 0; j < factor; j += 1){
-                    processedMatrix[rowIndex*factor + i][columnIndex*factor + j].blue = min;
-                }
-            }
-
-            // Randomly fill pixels with max until we get to a max count for that pixel
-            counter = 0;
-            while(counter < maxCount){
-                const i = Math.floor(Math.random()*factor);
-                const j = Math.floor(Math.random()*factor);
-                if(processedMatrix[rowIndex*factor + i][columnIndex*factor + j].blue === min){
-                    processedMatrix[rowIndex*factor + i][columnIndex*factor + j].blue = max;
-                    counter += 1;
-                }
-            }
         })
     });
 
     return processedMatrix;
 }
 
-function calculateMaxCount(max: number, min: number, current: number, slots: number): number {
+export function calculateMaxCount(max: number, min: number, current: number, slots: number): number {
     const step = Math.floor((max - min + 1 /* We add 1 because both max and min are part of the range */) / slots);
     const result = Math.floor((current - min + 1) / step);
     // console.log(max, min, current, slots, step, result);
