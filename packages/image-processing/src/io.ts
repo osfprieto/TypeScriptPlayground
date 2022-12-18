@@ -1,12 +1,8 @@
 import { readFile, writeFile } from 'fs';
 import { decode, encode } from 'bmp-js';
+import type { Pixel, PixelMatrix } from './types';
 
 declare type BMP_DTO = {width: number, height: number, data: Buffer};
-
-export type Pixel = {
-    alpha: number, red: number, green: number, blue: number
-}
-export type PixelMatrix = Pixel[][];
 
 /**
  * Reads a bmp image from a given path and returns a typed PixelMatrix
