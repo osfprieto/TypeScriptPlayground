@@ -32,9 +32,9 @@ export function readBmp(path: string): Promise<PixelMatrix>{
 export function writeBmp(path: string, pixelMatrix: PixelMatrix): Promise<void>{
     return new Promise((resolve, reject) => {
         try {
-            const preppedData = prepEncodedDataFromPixelMatrix(pixelMatrix)
-            const encodedData = encode();
-            writeFile(path, encodedData, () => resolve())
+            const preppedData = prepEncodedDataFromPixelMatrix(pixelMatrix);
+            const encodedData = encode(preppedData);
+            writeFile(path, encodedData.data, () => resolve());
         } catch (error) {
             reject(error);
         } 
