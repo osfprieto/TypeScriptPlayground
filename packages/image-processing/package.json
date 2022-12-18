@@ -8,7 +8,7 @@
         "clean": "just-scripts clean",
         "build": "just-scripts build",
         "test": "just-scripts test",
-        "image-to-gray": "just-scripts image-to-gray",
+        "image-to-monochrome": "just-scripts image-to-monochrome",
         "image-to-binary": "just-scripts image-to-binary",
         "quick-validation": "just-scripts quick-validation"
     },
