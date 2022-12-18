@@ -7,14 +7,14 @@ import { Pixel, PixelMatrix } from "./types";
  * Contains the full flow for reading and processing an image into its binary version.
  */
 export function imageToBinaryByComponentTask(): Promise<void>{
-    return readBmp('.images/gray.bmp')
+    return readBmp('.images/color.bmp')
     .then((pixelMatrix) => {
         resolveImageMetadata(pixelMatrix).then((metadata) => console.log('read image', metadata));
         return imageToBinaryByComponent(pixelMatrix);
     })
     .then((processedMatrix) => {
         resolveImageMetadata(processedMatrix).then((metadata) => console.log('processed image', metadata));
-        return writeBmp('.images/output/gray-binary-by-component.bmp', processedMatrix);
+        return writeBmp('.images/output/color-binary-by-component.bmp', processedMatrix);
     })
     .then(() => console.log('copied over'))
     .catch((error) => console.error(error));
