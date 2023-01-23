@@ -1,7 +1,7 @@
 {
-    "name": "typescript-template-package",
+    "name": "phraser",
     "version": "1.0.0",
-    "description": "TypeScript template package",
+    "description": "Enables deploying a server that displays phrases from a given input.",
     "license": "WTFPL",
     "main": "lib/index.js",
     "repository": "https://github.com/osfprieto/TypeScriptTemplate",
